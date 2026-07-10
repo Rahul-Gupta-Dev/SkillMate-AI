@@ -1,0 +1,32 @@
+src
+│
+├── assets
+│
+├── components
+│   ├── common
+│   ├── dashboard
+│   ├── ai
+│   ├── study
+│   ├── quiz
+│   ├── progress
+│   └── resources
+│
+├── layouts
+│
+├── pages
+│   ├── Home
+│   ├── Dashboard
+│   ├── Login
+│   ├── Register
+│   ├── AITutor
+│   ├── StudyPlan
+│   ├── Quiz
+│   ├── Progress
+│   └── Resources
+│
+├── routes
+├── context
+├── hooks
+├── services
+├── utils
+└── styles
