@@ -1,18 +1,22 @@
+import SearchBar from "./SearchBar";
+import NotificationBell from "./NotificationBell";
+import UserProfile from "./UserProfile";
+
 function Navbar() {
     return (
-        <div className="h-20 bg-white shadow flex items-center justify-between px-8">
+        <header className="h-20 bg-white border-b border-gray-200 px-8 flex items-center justify-between">
 
-            <h2 className="text-xl font-semibold">
-                Dashboard
-            </h2>
+            <SearchBar />
 
-            <div>
+            <div className="flex items-center gap-6">
 
-                👋 Rahul
+                <NotificationBell />
+
+                <UserProfile />
 
             </div>
 
-        </div>
+        </header>
     );
 }
 

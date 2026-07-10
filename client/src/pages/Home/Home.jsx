@@ -1,12 +1,11 @@
 import MainLayout from "../../layouts/MainLayout";
+import HeroSection from "../../components/dashboard/HeroSection";
 
 function Home() {
     return (
         <MainLayout>
 
-            <h1 className="text-5xl font-bold">
-                Welcome to SkillMate AI 🚀
-            </h1>
+            <HeroSection />
 
         </MainLayout>
     );
