@@ -1,13 +1,41 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import AITutor from "../pages/AITutor/AITutor";
+import StudyPlan from "../pages/StudyPlan/StudyPlan";
+import Quiz from "../pages/Quiz/Quiz";
+import Progress from "../pages/Progress/Progress";
+import Resources from "../pages/Resources/Resources";
+import Profile from "../pages/Profile/Profile";
 
 function AppRouter() {
     return (
         <BrowserRouter>
+
             <Routes>
-                <Route path="/" element={<Home />} />
+
+                <Route path="/" element={<Dashboard />} />
+
+                <Route path="/login" element={<Login />} />
+
+                <Route path="/register" element={<Register />} />
+
+                <Route path="/ai-tutor" element={<AITutor />} />
+
+                <Route path="/study-plan" element={<StudyPlan />} />
+
+                <Route path="/quiz" element={<Quiz />} />
+
+                <Route path="/progress" element={<Progress />} />
+
+                <Route path="/resources" element={<Resources />} />
+
+                <Route path="/profile" element={<Profile />} />
+
             </Routes>
+
         </BrowserRouter>
     );
 }

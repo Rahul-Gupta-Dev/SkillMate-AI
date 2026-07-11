@@ -3,10 +3,8 @@ import HeroSection from "../../components/dashboard/HeroSection";
 import QuickAccess from "../../components/dashboard/QuickAccess";
 import RecommendedCourses from "../../components/dashboard/RecommendedCourses";
 
-function Home() {
-
+function Dashboard() {
     return (
-
         <MainLayout>
 
             <HeroSection />
@@ -16,9 +14,7 @@ function Home() {
             <RecommendedCourses />
 
         </MainLayout>
-
-    )
-
+    );
 }
 
-export default Home;
+export default Dashboard;
