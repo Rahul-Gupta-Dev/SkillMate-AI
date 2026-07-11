@@ -3,9 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
 dotenv.config();
-console.log(process.env.MONGO_URI);
+console.log("Groq Key Loaded:", !!process.env.GROQ_API_KEY);
 connectDB();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/ai", aiRoutes);
 
 app.get("/", (req, res) => {
 

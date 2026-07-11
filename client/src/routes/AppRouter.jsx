@@ -9,6 +9,7 @@ import Quiz from "../pages/Quiz/Quiz";
 import Progress from "../pages/Progress/Progress";
 import Resources from "../pages/Resources/Resources";
 import Profile from "../pages/Profile/Profile";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AppRouter() {
     return (
@@ -16,7 +17,14 @@ function AppRouter() {
 
             <Routes>
 
-                <Route path="/" element={<Dashboard />} />
+                <Route
+                    path="/"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
 
                 <Route path="/login" element={<Login />} />
 
