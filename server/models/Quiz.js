@@ -23,9 +23,31 @@ const quizSchema = new mongoose.Schema(
             required: true,
         },
 
-        quiz: {
-            type: String,
-            required: true,
+        questions: [
+            {
+                question: String,
+
+                options: [String],
+
+                answer: String,
+
+                explanation: String,
+            },
+        ],
+
+        score: {
+            type: Number,
+            default: 0,
+        },
+
+        percentage: {
+            type: Number,
+            default: 0,
+        },
+
+        completed: {
+            type: Boolean,
+            default: false,
         },
     },
     {

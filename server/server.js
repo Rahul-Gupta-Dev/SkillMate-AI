@@ -9,6 +9,7 @@ import quizRoutes from "./routes/quizRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
 
+
 dotenv.config();
 console.log("Groq Key Loaded:", !!process.env.GROQ_API_KEY);
 connectDB();

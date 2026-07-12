@@ -4,7 +4,7 @@ import { getDashboard } from "../../services/dashboardService";
 
 function Dashboard() {
 
-    const [data, setData] = useState(null);
+    const [dashboard, setDashboard] = useState(null);
 
     const [loading, setLoading] = useState(true);
 
@@ -16,7 +16,7 @@ function Dashboard() {
 
                 const res = await getDashboard();
 
-                setData(res.data);
+                setDashboard(res.data.dashboard);
 
             } catch (error) {
 
@@ -35,11 +35,21 @@ function Dashboard() {
     }, []);
 
     if (loading) {
+
         return (
+
             <MainLayout>
-                <h1 className="text-3xl">Loading Dashboard...</h1>
+
+                <div className="text-center text-2xl mt-20">
+
+                    Loading Dashboard...
+
+                </div>
+
             </MainLayout>
+
         );
+
     }
 
     return (
@@ -50,39 +60,89 @@ function Dashboard() {
 
                 <h1 className="text-4xl font-bold mb-8">
 
-                    Welcome {data.name} 👋
+                    📊 Dashboard
 
                 </h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Statistics */}
 
-                    <div className="bg-blue-600 text-white rounded-2xl p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
 
-                        <h2 className="text-xl">
+                    <div className="bg-blue-600 text-white rounded-2xl p-6 shadow-lg">
+
+                        <h2 className="text-lg">
 
                             Study Plans
 
                         </h2>
 
-                        <p className="text-5xl font-bold mt-3">
+                        <p className="text-4xl font-bold mt-4">
 
-                            {data.totalStudyPlans}
+                            {dashboard.totalStudyPlans}
 
                         </p>
 
                     </div>
 
-                    <div className="bg-green-600 text-white rounded-2xl p-8">
+                    <div className="bg-green-600 text-white rounded-2xl p-6 shadow-lg">
 
-                        <h2 className="text-xl">
+                        <h2 className="text-lg">
 
                             Quizzes
 
                         </h2>
 
-                        <p className="text-5xl font-bold mt-3">
+                        <p className="text-4xl font-bold mt-4">
 
-                            {data.totalQuizzes}
+                            {dashboard.totalQuizzes}
+
+                        </p>
+
+                    </div>
+
+                    <div className="bg-purple-600 text-white rounded-2xl p-6 shadow-lg">
+
+                        <h2 className="text-lg">
+
+                            Completed
+
+                        </h2>
+
+                        <p className="text-4xl font-bold mt-4">
+
+                            {dashboard.completedQuizzes}
+
+                        </p>
+
+                    </div>
+
+                    <div className="bg-orange-500 text-white rounded-2xl p-6 shadow-lg">
+
+                        <h2 className="text-lg">
+
+                            Highest
+
+                        </h2>
+
+                        <p className="text-4xl font-bold mt-4">
+
+                            {dashboard.highestScore}%
+
+                        </p>
+
+                    </div>
+
+                    <div className="bg-pink-600 text-white rounded-2xl p-6 shadow-lg">
+
+                        <h2 className="text-lg">
+
+                            Average
+
+                        </h2>
+
+                        <p className="text-4xl font-bold mt-4">
+
+                            {dashboard.averageScore}%
 
                         </p>
 
@@ -90,78 +150,111 @@ function Dashboard() {
 
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 mt-10">
+                {/* Lists */}
 
-                    <div className="bg-white shadow rounded-2xl p-6">
+                <div className="grid lg:grid-cols-2 gap-8 mt-10">
+                    {/* Recent Study Plans */}
 
-                        <h2 className="text-2xl font-bold mb-5">
+                    <div className="bg-white shadow-lg rounded-2xl p-6">
 
-                            Recent Study Plans
-
+                        <h2 className="text-2xl font-bold mb-6">
+                            📚 Recent Study Plans
                         </h2>
 
                         {
+                            dashboard.recentStudyPlans.length === 0 ? (
 
-                            data.recentStudyPlans.map(plan => (
+                                <p className="text-gray-500">
+                                    No Study Plans Yet
+                                </p>
 
-                                <div
-                                    key={plan._id}
-                                    className="border-b py-3"
-                                >
+                            ) : (
 
-                                    <h3 className="font-semibold">
+                                dashboard.recentStudyPlans.map((plan) => (
 
-                                        {plan.topic}
+                                    <div
+                                        key={plan._id}
+                                        className="border-b py-4 last:border-0"
+                                    >
 
-                                    </h3>
+                                        <h3 className="font-bold text-lg">
+                                            {plan.topic}
+                                        </h3>
 
-                                    <p className="text-gray-500">
+                                        <div className="flex gap-4 mt-2 text-gray-600 text-sm">
 
-                                        {plan.level}
+                                            <span>
+                                                {plan.level}
+                                            </span>
 
-                                    </p>
+                                            <span>
+                                                {plan.duration}
+                                            </span>
 
-                                </div>
+                                        </div>
 
-                            ))
+                                    </div>
 
+                                ))
+
+                            )
                         }
 
                     </div>
 
-                    <div className="bg-white shadow rounded-2xl p-6">
+                    {/* Recent Quizzes */}
 
-                        <h2 className="text-2xl font-bold mb-5">
+                    <div className="bg-white shadow-lg rounded-2xl p-6">
 
-                            Recent Quizzes
-
+                        <h2 className="text-2xl font-bold mb-6">
+                            📝 Recent Quizzes
                         </h2>
 
                         {
+                            dashboard.recentQuizzes.length === 0 ? (
 
-                            data.recentQuizzes.map(quiz => (
+                                <p className="text-gray-500">
+                                    No Quiz Attempted Yet
+                                </p>
 
-                                <div
-                                    key={quiz._id}
-                                    className="border-b py-3"
-                                >
+                            ) : (
 
-                                    <h3 className="font-semibold">
+                                dashboard.recentQuizzes.map((quiz) => (
 
-                                        {quiz.topic}
+                                    <div
+                                        key={quiz._id}
+                                        className="border-b py-4 last:border-0"
+                                    >
 
-                                    </h3>
+                                        <div className="flex justify-between">
 
-                                    <p className="text-gray-500">
+                                            <h3 className="font-bold text-lg">
+                                                {quiz.topic}
+                                            </h3>
 
-                                        {quiz.difficulty}
+                                            <span className="font-bold text-blue-600">
+                                                {quiz.percentage}%
+                                            </span>
 
-                                    </p>
+                                        </div>
 
-                                </div>
+                                        <div className="flex gap-4 mt-2 text-gray-600 text-sm">
 
-                            ))
+                                            <span>
+                                                {quiz.difficulty}
+                                            </span>
 
+                                            <span>
+                                                {quiz.score} / {quiz.numberOfQuestions}
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                ))
+
+                            )
                         }
 
                     </div>
@@ -176,4 +269,4 @@ function Dashboard() {
 
 }
 
-export default Dashboard;
+export default Dashboard;                    
