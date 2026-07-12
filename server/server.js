@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
+import studyPlanRoutes from "./routes/studyPlanRoutes.js";
 
 dotenv.config();
 console.log("Groq Key Loaded:", !!process.env.GROQ_API_KEY);
@@ -17,7 +18,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/ai", aiRoutes);
-
+app.use("/api/study-plan", studyPlanRoutes);
 app.get("/", (req, res) => {
 
     res.json({

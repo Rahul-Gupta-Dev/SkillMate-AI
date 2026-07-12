@@ -34,7 +34,15 @@ function AITutor() {
         try {
             setLoading(true);
 
-            const res = await askAI(userMessage);
+            const chatHistory = [
+                ...messages,
+                {
+                    role: "user",
+                    content: userMessage,
+                },
+            ];
+
+            const res = await askAI(chatHistory);
 
             setMessages((prev) => [
                 ...prev,

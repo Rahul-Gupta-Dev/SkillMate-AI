@@ -4,8 +4,10 @@ const API = axios.create({
   baseURL: "http://localhost:5000/api/ai",
 });
 
-export const askAI = async (message) => {
-  return API.post("/chat", { message });
+export const askAI = async (messages) => {
+  return API.post("/chat", {
+    messages,
+  });
 };
 
 export default API;
