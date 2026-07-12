@@ -1,4 +1,17 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+    BookOpen,
+    Brain,
+    CalendarDays,
+    BarChart3,
+    ArrowRight,
+    Trophy,
+    ClipboardList,
+    Target,
+    Sparkles,
+} from "lucide-react";
+
 import MainLayout from "../../layouts/MainLayout";
 import { getDashboard } from "../../services/dashboardService";
 
@@ -18,9 +31,9 @@ function Dashboard() {
 
                 setDashboard(res.data.dashboard);
 
-            } catch (error) {
+            } catch (err) {
 
-                console.error(error);
+                console.log(err);
 
             } finally {
 
@@ -40,9 +53,13 @@ function Dashboard() {
 
             <MainLayout>
 
-                <div className="text-center text-2xl mt-20">
+                <div className="flex justify-center items-center h-[70vh]">
 
-                    Loading Dashboard...
+                    <h1 className="text-3xl font-bold">
+
+                        Loading Dashboard...
+
+                    </h1>
 
                 </div>
 
@@ -56,119 +73,413 @@ function Dashboard() {
 
         <MainLayout>
 
-            <div className="max-w-7xl mx-auto">
+            <div className="space-y-10">
 
-                <h1 className="text-4xl font-bold mb-8">
+                {/* HERO SECTION */}
 
-                    📊 Dashboard
+                <div className="bg-white rounded-3xl shadow-lg p-10">
 
-                </h1>
+                    <div className="grid lg:grid-cols-2 gap-10 items-center">
 
-                {/* Statistics */}
+                        {/* LEFT */}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                        <div>
 
-                    <div className="bg-blue-600 text-white rounded-2xl p-6 shadow-lg">
+                            <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-semibold">
 
-                        <h2 className="text-lg">
+                                <Sparkles size={18} />
 
-                            Study Plans
+                                AI Powered Learning
 
-                        </h2>
+                            </span>
 
-                        <p className="text-4xl font-bold mt-4">
+                            <h1 className="text-6xl font-extrabold leading-tight mt-6">
 
-                            {dashboard.totalStudyPlans}
+                                Learn Smarter
+                                <br />
 
-                        </p>
+                                with
 
-                    </div>
+                                <span className="text-blue-600">
 
-                    <div className="bg-green-600 text-white rounded-2xl p-6 shadow-lg">
+                                    {" "}AI
 
-                        <h2 className="text-lg">
+                                </span>
 
-                            Quizzes
+                            </h1>
 
-                        </h2>
+                            <p className="text-gray-500 text-xl mt-6 leading-9">
 
-                        <p className="text-4xl font-bold mt-4">
+                                Personalized learning paths,
 
-                            {dashboard.totalQuizzes}
+                                AI Tutor,
 
-                        </p>
+                                Quiz Generator,
 
-                    </div>
+                                Progress Tracking
 
-                    <div className="bg-purple-600 text-white rounded-2xl p-6 shadow-lg">
+                                and Smart Study Plans
 
-                        <h2 className="text-lg">
+                                in one platform.
 
-                            Completed
+                            </p>
 
-                        </h2>
+                            <Link
 
-                        <p className="text-4xl font-bold mt-4">
+                                to="/ai-tutor"
 
-                            {dashboard.completedQuizzes}
+                                className="inline-flex items-center gap-2 mt-8 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold transition"
 
-                        </p>
+                            >
 
-                    </div>
+                                Start Learning
 
-                    <div className="bg-orange-500 text-white rounded-2xl p-6 shadow-lg">
+                                <ArrowRight size={22} />
 
-                        <h2 className="text-lg">
+                            </Link>
 
-                            Highest
+                        </div>
 
-                        </h2>
+                        {/* RIGHT */}
 
-                        <p className="text-4xl font-bold mt-4">
+                        <div className="flex justify-center">
 
-                            {dashboard.highestScore}%
+                            <img
 
-                        </p>
+                                src="/robot.png"
 
-                    </div>
+                                alt="Robot"
 
-                    <div className="bg-pink-600 text-white rounded-2xl p-6 shadow-lg">
+                                className="w-[330px]"
 
-                        <h2 className="text-lg">
+                            />
 
-                            Average
-
-                        </h2>
-
-                        <p className="text-4xl font-bold mt-4">
-
-                            {dashboard.averageScore}%
-
-                        </p>
+                        </div>
 
                     </div>
 
                 </div>
 
-                {/* Lists */}
+                {/* QUICK ACCESS */}
 
-                <div className="grid lg:grid-cols-2 gap-8 mt-10">
-                    {/* Recent Study Plans */}
+                <div>
 
-                    <div className="bg-white shadow-lg rounded-2xl p-6">
+                    <div className="flex justify-between items-center mb-6">
 
-                        <h2 className="text-2xl font-bold mb-6">
+                        <h2 className="text-3xl font-bold">
+
+                            Quick Access
+
+                        </h2>
+
+                    </div>
+
+                    <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+                        <Link
+                            to="/ai-tutor"
+                            className="bg-white rounded-3xl shadow-lg p-7 hover:shadow-xl transition"
+                        >
+
+                            <div className="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center">
+
+                                <Brain
+                                    className="text-blue-600"
+                                    size={32}
+                                />
+
+                            </div>
+
+                            <h3 className="font-bold text-2xl mt-5">
+
+                                AI Tutor
+
+                            </h3>
+
+                            <p className="text-gray-500 mt-2">
+
+                                Ask doubts and get instant explanations.
+
+                            </p>
+
+                        </Link>
+
+                        <Link
+                            to="/study-plan"
+                            className="bg-white rounded-3xl shadow-lg p-7 hover:shadow-xl transition"
+                        >
+
+                            <div className="bg-green-100 w-16 h-16 rounded-2xl flex items-center justify-center">
+
+                                <CalendarDays
+                                    className="text-green-600"
+                                    size={32}
+                                />
+
+                            </div>
+
+                            <h3 className="font-bold text-2xl mt-5">
+
+                                Study Plan
+
+                            </h3>
+
+                            <p className="text-gray-500 mt-2">
+
+                                AI generated personalized roadmap.
+
+                            </p>
+
+                        </Link>
+
+                        <Link
+                            to="/quiz"
+                            className="bg-white rounded-3xl shadow-lg p-7 hover:shadow-xl transition"
+                        >
+
+                            <div className="bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center">
+
+                                <ClipboardList
+                                    className="text-purple-600"
+                                    size={32}
+                                />
+
+                            </div>
+
+                            <h3 className="font-bold text-2xl mt-5">
+
+                                Quiz
+
+                            </h3>
+
+                            <p className="text-gray-500 mt-2">
+
+                                Practice AI generated quizzes.
+
+                            </p>
+
+                        </Link>
+
+                        <Link
+                            to="/progress"
+                            className="bg-white rounded-3xl shadow-lg p-7 hover:shadow-xl transition"
+                        >
+
+                            <div className="bg-orange-100 w-16 h-16 rounded-2xl flex items-center justify-center">
+
+                                <BarChart3
+                                    className="text-orange-600"
+                                    size={32}
+                                />
+
+                            </div>
+
+                            <h3 className="font-bold text-2xl mt-5">
+
+                                Progress
+
+                            </h3>
+
+                            <p className="text-gray-500 mt-2">
+
+                                Track your learning journey.
+
+                            </p>
+
+                        </Link>
+
+                    </div>
+
+                </div>
+
+                {/* RECOMMENDED COURSES */}
+                <br></br>
+                <div>
+
+                    <div className="flex justify-between items-center mb-6">
+
+                        <h2 className="text-3xl font-bold">
+
+                            Recommended For You
+
+                        </h2>
+
+                        <Link
+                            to="/resources"
+                            className="text-blue-600 font-semibold"
+                        >
+
+                            View All →
+
+                        </Link>
+
+                    </div>
+                    <br></br>
+                    <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+                        {[
+                            {
+                                title: "Python Basics",
+                                level: "Beginner",
+                                progress: 75,
+                                color: "bg-blue-600",
+                            },
+                            {
+                                title: "Data Structures",
+                                level: "Intermediate",
+                                progress: 40,
+                                color: "bg-green-600",
+                            },
+                            {
+                                title: "DBMS",
+                                level: "Beginner",
+                                progress: 60,
+                                color: "bg-orange-500",
+                            },
+                            {
+                                title: "Machine Learning",
+                                level: "Advanced",
+                                progress: 20,
+                                color: "bg-purple-600",
+                            },
+                        ].map((course) => (
+
+                            <div
+                                key={course.title}
+                                className="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition"
+                            >
+
+                                <h3 className="text-2xl font-bold">
+
+                                    {course.title}
+
+                                </h3>
+
+                                <p className="text-gray-500 mt-1">
+
+                                    {course.level}
+
+                                </p>
+
+                                <div className="w-full h-3 bg-gray-200 rounded-full mt-5">
+
+                                    <div
+                                        className={`${course.color} h-3 rounded-full`}
+                                        style={{
+                                            width: `${course.progress}%`,
+                                        }}
+                                    ></div>
+
+                                </div>
+
+                                <p className="mt-3 text-gray-600">
+
+                                    {course.progress}% Completed
+
+                                </p>
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+                {/* ANALYTICS */}
+                <br></br>
+                <div>
+
+                    <h2 className="text-3xl font-bold mb-6">
+
+                        Your Statistics
+
+                    </h2>
+
+                    <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-5">
+
+                        {[
+                            {
+                                title: "Study Plans",
+                                value: dashboard.totalStudyPlans,
+                                color: "bg-blue-600",
+                            },
+                            {
+                                title: "Quizzes",
+                                value: dashboard.totalQuizzes,
+                                color: "bg-green-600",
+                            },
+                            {
+                                title: "Completed",
+                                value: dashboard.completedQuizzes,
+                                color: "bg-purple-600",
+                            },
+                            {
+                                title: "Highest",
+                                value: `${dashboard.highestScore}%`,
+                                color: "bg-orange-500",
+                            },
+                            {
+                                title: "Average",
+                                value: `${dashboard.averageScore}%`,
+                                color: "bg-pink-600",
+                            },
+                        ].map((item) => (
+
+                            <div
+                                key={item.title}
+                                className={`${item.color} rounded-2xl p-6  text-white shadow-lg`}
+                            >
+
+                                <p className="text-lg">
+
+                                    {item.title}
+
+                                </p>
+
+                                <h1 className="text-4xl font-bold mt-3">
+
+                                    {item.value}
+
+                                </h1>
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+                <br></br>
+                {/* RECENT */}
+
+                <div className="grid lg:grid-cols-2 gap-8">
+
+                    <div className="bg-white rounded-3xl shadow-lg p-8">
+
+                        <h2 className="text-3xl font-bold mb-6">
+
                             📚 Recent Study Plans
+
                         </h2>
 
                         {
-                            dashboard.recentStudyPlans.length === 0 ? (
 
-                                <p className="text-gray-500">
-                                    No Study Plans Yet
-                                </p>
+                            dashboard.recentStudyPlans.length === 0
 
-                            ) : (
+                                ?
+
+                                (
+
+                                    <p className="text-gray-500">
+
+                                        No Study Plans Yet
+
+                                    </p>
+
+                                )
+
+                                :
 
                                 dashboard.recentStudyPlans.map((plan) => (
 
@@ -177,76 +488,88 @@ function Dashboard() {
                                         className="border-b py-4 last:border-0"
                                     >
 
-                                        <h3 className="font-bold text-lg">
+                                        <h3 className="font-bold text-xl">
+
                                             {plan.topic}
+
                                         </h3>
 
-                                        <div className="flex gap-4 mt-2 text-gray-600 text-sm">
+                                        <p className="text-gray-500">
 
-                                            <span>
-                                                {plan.level}
-                                            </span>
+                                            {plan.level} • {plan.duration}
 
-                                            <span>
-                                                {plan.duration}
-                                            </span>
-
-                                        </div>
+                                        </p>
 
                                     </div>
 
                                 ))
 
-                            )
                         }
 
                     </div>
 
-                    {/* Recent Quizzes */}
+                    <div className="bg-white rounded-3xl shadow-lg p-8">
 
-                    <div className="bg-white shadow-lg rounded-2xl p-6">
+                        <h2 className="text-3xl font-bold mb-6">
 
-                        <h2 className="text-2xl font-bold mb-6">
                             📝 Recent Quizzes
+
                         </h2>
 
                         {
-                            dashboard.recentQuizzes.length === 0 ? (
 
-                                <p className="text-gray-500">
-                                    No Quiz Attempted Yet
-                                </p>
+                            dashboard.recentQuizzes.length === 0
 
-                            ) : (
+                                ?
+
+                                (
+
+                                    <p className="text-gray-500">
+
+                                        No Quiz Attempted
+
+                                    </p>
+
+                                )
+
+                                :
 
                                 dashboard.recentQuizzes.map((quiz) => (
 
                                     <div
                                         key={quiz._id}
-                                        className="border-b py-4 last:border-0"
+                                        className="border-b py-4 last:border-0 flex justify-between items-center"
                                     >
 
-                                        <div className="flex justify-between">
+                                        <div>
 
-                                            <h3 className="font-bold text-lg">
+                                            <h3 className="font-bold text-xl">
+
                                                 {quiz.topic}
+
                                             </h3>
 
-                                            <span className="font-bold text-blue-600">
-                                                {quiz.percentage}%
-                                            </span>
+                                            <p className="text-gray-500">
+
+                                                {quiz.difficulty}
+
+                                            </p>
 
                                         </div>
 
-                                        <div className="flex gap-4 mt-2 text-gray-600 text-sm">
+                                        <div className="text-right">
 
-                                            <span>
-                                                {quiz.difficulty}
-                                            </span>
+                                            <p className="font-bold text-blue-600 text-xl">
 
-                                            <span>
-                                                {quiz.score} / {quiz.numberOfQuestions}
-                                            </span>
+                                                {quiz.percentage}%
+
+                                            </p>
+
+                                            <p className="text-gray-500">
+
+                                                {quiz.score}/{quiz.numberOfQuestions}
+
+                                            </p>
 
                                         </div>
 
@@ -254,7 +577,6 @@ function Dashboard() {
 
                                 ))
 
-                            )
                         }
 
                     </div>
@@ -269,4 +591,4 @@ function Dashboard() {
 
 }
 
-export default Dashboard;                    
+export default Dashboard;
