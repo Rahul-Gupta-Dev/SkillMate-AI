@@ -1,11 +1,5 @@
-import axios from "axios";
+import API from "./api";
 
-const API = axios.create({
-    baseURL: "http://localhost:5000/api/study-plan",
-});
-
-export const generateStudyPlan = async (data) => {
-    return API.post("/generate", data);
+export const generateStudyPlan = (data) => {
+    return API.post("/study-plan/generate", data);
 };
-
-export default API;

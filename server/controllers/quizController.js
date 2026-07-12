@@ -1,13 +1,24 @@
 import Groq from "groq-sdk";
-import StudyPlan from "../models/StudyPlan.js";
+import Quiz from "../models/Quiz.js";
 
-export const generateStudyPlan = async (req, res) => {
+export const generateQuiz = async (req, res) => {
+    console.log("Inside Quiz Controller");
+    console.log("req.user =", req.user);
     try {
-        const { topic, duration, level, dailyHours, goal } = req.body;
+        const {
+            topic,
+            difficulty,
+            numberOfQuestions,
+        } = req.body;
 
         const userId = req.user.id;
 
-        if (!userId || !topic || !duration || !level || !dailyHours || !goal) {
+        if (
+            !userId ||
+            !topic ||
+            !difficulty ||
+            !numberOfQuestions
+        ) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required",
@@ -19,20 +30,22 @@ export const generateStudyPlan = async (req, res) => {
         });
 
         const prompt = `
-Create a personalized study plan.
+Generate ${numberOfQuestions} multiple-choice questions.
 
 Topic: ${topic}
-Duration: ${duration}
-Level: ${level}
-Daily Study Time: ${dailyHours} hour(s)
-Goal: ${goal}
+Difficulty: ${difficulty}
 
-Instructions:
-- Divide the plan day by day.
-- Mention topics for each day.
-- Give daily practice tasks.
-- Suggest one mini project if applicable.
-- Keep the language simple.
+For each question provide:
+
+Question
+
+Options A-D
+
+Correct Answer
+
+Short Explanation
+
+Return in Markdown format.
 `;
 
         const completion = await groq.chat.completions.create({
@@ -41,7 +54,7 @@ Instructions:
                 {
                     role: "system",
                     content:
-                        "You are an expert learning mentor who creates structured study roadmaps.",
+                        "You are an expert quiz creator.",
                 },
                 {
                     role: "user",
@@ -50,29 +63,29 @@ Instructions:
             ],
         });
 
-        const plan = completion.choices[0].message.content;
+        const quiz = completion.choices[0].message.content;
 
-        const studyPlan = await StudyPlan.create({
+        const savedQuiz = await Quiz.create({
             userId,
             topic,
-            duration,
-            level,
-            dailyHours,
-            goal,
-            plan,
+            difficulty,
+            numberOfQuestions,
+            quiz,
         });
 
         res.status(201).json({
             success: true,
-            message: "Study Plan Generated Successfully",
-            studyPlan,
+            quiz: savedQuiz,
         });
+
     } catch (error) {
+
         console.error(error);
 
         res.status(500).json({
             success: false,
             message: error.message,
         });
+
     }
 };

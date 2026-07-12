@@ -1,15 +1,9 @@
-import axios from "axios";
+import API from "./api";
 
-const API = axios.create({
-    baseURL: "http://localhost:5000/api/auth",
-});
-
-export const registerUser = async (userData) => {
-    return API.post("/register", userData);
+export const registerUser = (userData) => {
+    return API.post("/auth/register", userData);
 };
 
-export const loginUser = async (userData) => {
-    return API.post("/login", userData);
+export const loginUser = (userData) => {
+    return API.post("/auth/login", userData);
 };
-
-export default API;

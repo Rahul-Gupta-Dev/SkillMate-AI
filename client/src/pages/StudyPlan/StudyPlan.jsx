@@ -34,7 +34,7 @@ function StudyPlan() {
             setLoading(true);
 
             const data = {
-                userId: "6a52361bc5358e19bddff437",
+
                 ...form,
             };
 

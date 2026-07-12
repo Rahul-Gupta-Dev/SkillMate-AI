@@ -1,13 +1,7 @@
-import axios from "axios";
+import API from "./api";
 
-const API = axios.create({
-  baseURL: "http://localhost:5000/api/ai",
-});
-
-export const askAI = async (messages) => {
-  return API.post("/chat", {
+export const askAI = (messages) => {
+  return API.post("/ai/chat", {
     messages,
   });
 };
-
-export default API;

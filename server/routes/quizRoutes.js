@@ -1,9 +1,9 @@
 import express from "express";
-import { generateStudyPlan } from "../controllers/studyPlanController.js";
+import { generateQuiz } from "../controllers/quizController.js";
 import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/generate", protect, generateStudyPlan);
+router.post("/generate", protect, generateQuiz);
 
 export default router;
