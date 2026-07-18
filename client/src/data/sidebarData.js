@@ -1,56 +1,60 @@
 import {
-    FaHome,
-    FaRobot,
-    FaCalendarAlt,
-    FaClipboardList,
-    FaChartLine,
-    FaBookOpen,
-    FaUser,
-} from "react-icons/fa";
+  LayoutDashboard,
+  Brain,
+  CalendarDays,
+  ClipboardList,
+  BarChart3,
+  BookOpen,
+  User,
+} from "lucide-react";
 
-const sidebarData = [
-    {
-        id: 1,
-        title: "Dashboard",
-        icon: FaHome,
-        path: "/",
-    },
-    {
-        id: 2,
-        title: "AI Tutor",
-        icon: FaRobot,
-        path: "/ai-tutor",
-    },
-    {
-        id: 3,
-        title: "Study Plan",
-        icon: FaCalendarAlt,
-        path: "/study-plan",
-    },
-    {
-        id: 4,
-        title: "Quiz",
-        icon: FaClipboardList,
-        path: "/quiz",
-    },
-    {
-        id: 5,
-        title: "Progress",
-        icon: FaChartLine,
-        path: "/progress",
-    },
-    {
-        id: 6,
-        title: "Resources",
-        icon: FaBookOpen,
-        path: "/resources",
-    },
-    {
-        id: 7,
-        title: "Profile",
-        icon: FaUser,
-        path: "/profile",
-    },
+export default [
+  {
+    id: 1,
+    title: "Dashboard",
+    path: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    id: 2,
+    title: "AI Tutor",
+    path: "/ai-tutor",
+    icon: Brain,
+  },
+  {
+    id: 3,
+    title: "Study Plan",
+    path: "/study-plan",
+    icon: CalendarDays,
+  },
+  {
+    id: 4,
+    title: "Quiz",
+    path: "/quiz",
+    icon: ClipboardList,
+  },
+  {
+    id: 5,
+    title: "Progress",
+    path: "/progress",
+    icon: BarChart3,
+  },
+  {
+    id: 6,
+    title: "Resources",
+    path: "/resources",
+    icon: BookOpen,
+  },
+  {
+    id: 7,
+    title: "AI Habit Coach",
+    path: "/habit-tracker",
+    icon: Brain,
+  },
+  {
+    id: 8,
+    title: "Profile",
+    path: "/profile",
+    icon: User,
+  },
 ];
-
-export default sidebarData;
