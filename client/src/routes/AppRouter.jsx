@@ -40,7 +40,6 @@ function AppRouter() {
 
                 <Route path="/resources" element={<Resources />} />
 
-<Route path="/habit-tracker" element={<HabitTracker />} />
 
                 <Route path="/profile" element={<Profile />} />
 
