@@ -10,6 +10,7 @@ import Progress from "../pages/Progress/Progress";
 import Resources from "../pages/Resources/Resources";
 import Profile from "../pages/Profile/Profile";
 import ProtectedRoute from "./ProtectedRoute";
+import HabitTracker from "../pages/HabitTracker/HabitTracker";
 
 function AppRouter() {
     return (
@@ -40,6 +41,8 @@ function AppRouter() {
 
                 <Route path="/resources" element={<Resources />} />
 
+                <Route path="/habit-tracker" element={<HabitTracker />} />
+                ff4bacd (Add AI Habit Coach frontend UI)
 
                 <Route path="/profile" element={<Profile />} />
 

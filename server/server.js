@@ -8,7 +8,7 @@ import studyPlanRoutes from "./routes/studyPlanRoutes.js";
 import quizRoutes from "./routes/quizRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
-
+import habitRoutes from "./routes/habitRoutes.js";
 
 dotenv.config();
 console.log("Groq Key Loaded:", !!process.env.GROQ_API_KEY);
@@ -25,6 +25,7 @@ app.use("/api/ai", aiRoutes);
 app.use("/api/study-plan", studyPlanRoutes);
 app.use("/api/quiz", quizRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/habits", habitRoutes);
 app.use("/api/profile", profileRoutes);
 app.get("/", (req, res) => {
 

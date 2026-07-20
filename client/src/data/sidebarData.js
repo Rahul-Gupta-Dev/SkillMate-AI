@@ -45,9 +45,14 @@ export default [
     path: "/resources",
     icon: BookOpen,
   },
- 
   {
     id: 7,
+    title: "AI Habit Tracker",
+    path: "/habit-tracker",
+    icon: Brain,
+  },
+  {
+    id: 8,
     title: "Profile",
     path: "/profile",
     icon: User,

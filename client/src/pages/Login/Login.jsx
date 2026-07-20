@@ -39,13 +39,13 @@ function Login() {
 
     return (
         <div className="min-h-screen flex justify-center items-center bg-slate-100">
-            <div className="bg-white p-10 rounded-3xl shadow-lg w-[420px]">
+            <div className="bg-white p-10 rounded-3xl shadow-lg w-[500px] border border-gray-800">
 
                 <h1 className="text-3xl font-bold text-center mb-8">
                     Welcome Back
                 </h1>
-
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <br></br>
+                <form onSubmit={handleSubmit} className="flex flex-col items-center">
 
                     <input
                         type="email"
@@ -53,8 +53,9 @@ function Login() {
                         placeholder="Email"
                         value={form.email}
                         onChange={handleChange}
-                        className="w-full border rounded-xl p-3"
+                        className="w-[98%] border rounded-xl p-3 text-center"
                     />
+                    <br></br><br></br>
 
                     <input
                         type="password"
@@ -62,17 +63,18 @@ function Login() {
                         placeholder="Password"
                         value={form.password}
                         onChange={handleChange}
-                        className="w-full border rounded-xl p-3"
+                        className="w-[98%] border rounded-xl p- text-center"
                     />
-
+                    <br></br><br></br>
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
+                        className="w-[30%] bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
                     >
                         Login
                     </button>
 
                 </form>
+                <br></br>
 
                 <p className="text-center mt-5">
                     Don't have an account?
@@ -81,7 +83,9 @@ function Login() {
                         to="/register"
                         className="text-blue-600 ml-2 hover:underline"
                     >
-                        Register
+                        <span>
+                            ‎ Register
+                        </span>
                     </Link>
 
                 </p>
