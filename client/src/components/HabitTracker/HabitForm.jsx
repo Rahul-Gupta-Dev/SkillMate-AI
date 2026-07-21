@@ -1,5 +1,10 @@
-import { createHabit } from "../../services/habitService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import {
+    createHabit,
+    getTodayHabit,
+} from "../../services/habitService";
+
 import {
     BookOpen,
     Smartphone,
@@ -30,17 +35,62 @@ function HabitForm() {
 
     });
 
-    const handleChange = (e) => {
 
-        setFormData({
+    useEffect(() => {
 
-            ...formData,
+        fetchTodayHabit();
 
-            [e.target.name]: e.target.value,
+    }, []);
 
-        });
+    const fetchTodayHabit = async () => {
+
+        try {
+
+            const res = await getTodayHabit();
+            console.log(res.data);
+            if (res.data.habit) {
+
+                setFormData({
+
+                    studyHours: res.data.habit.studyHours || "",
+                    readingMinutes: res.data.habit.readingMinutes || "",
+                    goal: res.data.habit.goal || "",
+
+                    instagramHours: res.data.habit.instagramHours || "",
+                    youtubeHours: res.data.habit.youtubeHours || "",
+                    gamingHours: res.data.habit.gamingHours || "",
+                    otherSocialHours: res.data.habit.otherSocialHours || "",
+
+                    sleepHours: res.data.habit.sleepHours || "",
+                    exerciseMinutes: res.data.habit.exerciseMinutes || "",
+                    waterIntake: res.data.habit.waterIntake || "",
+
+                    mood: res.data.habit.mood || "",
+                    notes: res.data.habit.notes || "",
+
+                });
+
+            }
+
+        } catch (err) {
+
+            console.log(err);
+
+        }
 
     };
+
+    const handleChange = (e) => {
+
+        const { name, value } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+
+    };
+
 
     const handleSubmit = async (e) => {
 
