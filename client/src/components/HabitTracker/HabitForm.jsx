@@ -1,3 +1,4 @@
+import { createHabit } from "../../services/habitService";
 import { useState } from "react";
 import {
     BookOpen,
@@ -5,6 +6,7 @@ import {
     HeartPulse,
     Save,
 } from "lucide-react";
+
 
 function HabitForm() {
 
@@ -40,16 +42,27 @@ function HabitForm() {
 
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
 
-        console.log(formData);
+        try {
 
-        alert("Habit Saved Successfully ✅");
+            const res = await createHabit(formData);
+
+            console.log(res.data);
+
+            alert("Habit Saved Successfully ✅");
+
+        } catch (err) {
+
+            console.error(err);
+
+            alert("Failed to Save Habit");
+
+        }
 
     };
-
     return (
 
         <div className="bg-white rounded-3xl shadow-lg p-8">

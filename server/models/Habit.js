@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const habitSchema = new mongoose.Schema(
     {
-        user: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: true,
@@ -76,8 +76,7 @@ const habitSchema = new mongoose.Schema(
         aiSuggestion: {
             type: String,
             default: "",
-        }
-
+        },
     },
     {
         timestamps: true,
