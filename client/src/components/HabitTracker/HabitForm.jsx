@@ -146,15 +146,18 @@ function HabitForm({ habitData, setHabitData }) {
                         <input
                             type="number"
                             name="studyHours"
+                            max="24"
                             placeholder="Study Hours"
                             value={formData.studyHours}
                             onChange={handleChange}
                             className="border rounded-xl p-4"
+
                         />
 
                         <input
                             type="number"
                             name="readingMinutes"
+                            max="1440"
                             placeholder="Reading Minutes"
                             value={formData.readingMinutes}
                             onChange={handleChange}
@@ -202,6 +205,7 @@ function HabitForm({ habitData, setHabitData }) {
                         <input
                             type="number"
                             name="instagramHours"
+                            max="24"
                             placeholder="Instagram"
                             value={formData.instagramHours}
                             onChange={handleChange}
@@ -211,6 +215,7 @@ function HabitForm({ habitData, setHabitData }) {
                         <input
                             type="number"
                             name="youtubeHours"
+                            max="24"
                             placeholder="YouTube"
                             value={formData.youtubeHours}
                             onChange={handleChange}
@@ -220,6 +225,7 @@ function HabitForm({ habitData, setHabitData }) {
                         <input
                             type="number"
                             name="gamingHours"
+                            max="24"
                             placeholder="Gaming"
                             value={formData.gamingHours}
                             onChange={handleChange}
@@ -229,6 +235,7 @@ function HabitForm({ habitData, setHabitData }) {
                         <input
                             type="number"
                             name="otherSocialHours"
+                            max="24"
                             placeholder="Other Social"
                             value={formData.otherSocialHours}
                             onChange={handleChange}
@@ -260,6 +267,7 @@ function HabitForm({ habitData, setHabitData }) {
                         <input
                             type="number"
                             name="sleepHours"
+                            max="24"
                             placeholder="Sleep Hours"
                             value={formData.sleepHours}
                             onChange={handleChange}
@@ -269,6 +277,7 @@ function HabitForm({ habitData, setHabitData }) {
                         <input
                             type="number"
                             name="exerciseMinutes"
+                            max="300"
                             placeholder="Exercise Minutes"
                             value={formData.exerciseMinutes}
                             onChange={handleChange}
