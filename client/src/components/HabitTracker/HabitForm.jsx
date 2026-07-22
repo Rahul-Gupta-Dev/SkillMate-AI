@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import {
     createHabit,
     getTodayHabit,
+    updateHabit,
 } from "../../services/habitService";
 
 import {
@@ -13,28 +14,10 @@ import {
 } from "lucide-react";
 
 
-function HabitForm() {
+function HabitForm({ habitData, setHabitData }) {
 
-    const [formData, setFormData] = useState({
-
-        studyHours: "",
-        readingMinutes: "",
-        goal: "",
-
-        instagramHours: "",
-        youtubeHours: "",
-        gamingHours: "",
-        otherSocialHours: "",
-
-        sleepHours: "",
-        exerciseMinutes: "",
-        waterIntake: "",
-        mood: "",
-
-        notes: ""
-
-    });
-
+    const formData = habitData;
+    const setFormData = setHabitData;
 
     useEffect(() => {
 
@@ -50,7 +33,7 @@ function HabitForm() {
             console.log(res.data);
             if (res.data.habit) {
 
-                setFormData({
+                setHabitData({
 
                     studyHours: res.data.habit.studyHours || "",
                     readingMinutes: res.data.habit.readingMinutes || "",
@@ -84,10 +67,11 @@ function HabitForm() {
 
         const { name, value } = e.target;
 
-        setFormData((prev) => ({
+        setHabitData((prev) => ({
             ...prev,
             [name]: value,
         }));
+
 
     };
 
@@ -98,21 +82,34 @@ function HabitForm() {
 
         try {
 
-            const res = await createHabit(formData);
+            const today = await getTodayHabit();
 
-            console.log(res.data);
+            if (today.data.habit) {
 
-            alert("Habit Saved Successfully ✅");
+                await updateHabit(formData);
+
+                alert("Habit Updated Successfully ✅");
+
+            } else {
+
+                await createHabit(formData);
+
+                alert("Habit Saved Successfully ✅");
+
+            }
+
+            await fetchTodayHabit();
 
         } catch (err) {
 
             console.error(err);
 
-            alert("Failed to Save Habit");
-
         }
 
     };
+
+
+
     return (
 
         <div className="bg-white rounded-3xl shadow-lg p-8">

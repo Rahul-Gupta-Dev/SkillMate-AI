@@ -85,3 +85,51 @@ export const getTodayHabit = async (req, res) => {
         });
     }
 };
+
+// ================= UPDATE TODAY HABIT =================
+
+export const updateHabit = async (req, res) => {
+
+    try {
+
+        const userId = req.user.id;
+
+        const start = new Date();
+        start.setHours(0, 0, 0, 0);
+
+        const end = new Date();
+        end.setHours(23, 59, 59, 999);
+
+        const habit = await Habit.findOneAndUpdate(
+
+            {
+                userId,
+                createdAt: {
+                    $gte: start,
+                    $lte: end,
+                },
+            },
+
+            req.body,
+
+            {
+                new: true,
+            }
+
+        );
+
+        res.json({
+            success: true,
+            habit,
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+
+    }
+
+};

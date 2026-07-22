@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import MainLayout from "../../layouts/MainLayout";
 
 import HabitHero from "../../components/HabitTracker/HabitHero";
@@ -10,6 +12,26 @@ import AchievementSection from "../../components/HabitTracker/AchievementSection
 
 function HabitTracker() {
 
+    const [habitData, setHabitData] = useState({
+
+        studyHours: 0,
+        readingMinutes: 0,
+        goal: "",
+
+        instagramHours: 0,
+        youtubeHours: 0,
+        gamingHours: 0,
+        otherSocialHours: 0,
+
+        sleepHours: 0,
+        exerciseMinutes: 0,
+        waterIntake: 0,
+
+        mood: "",
+        notes: "",
+
+    });
+
     return (
 
         <MainLayout>
@@ -17,23 +39,23 @@ function HabitTracker() {
             <div className="space-y-8">
 
                 <HabitHero />
-                <br></br>
 
-                <HabitOverview />
-                <br></br>
-                <HabitForm />
-                <br></br>
+                <HabitOverview habit={habitData} />
+
+                <HabitForm
+                    habitData={habitData}
+                    setHabitData={setHabitData}
+                />
+
                 <AIHabitCoach />
-                <br></br>
+
                 <WeeklyAnalytics />
-                <br></br>
+
                 <WeeklyReport />
-                <br></br>
+
                 <AchievementSection />
-                <br></br>
 
             </div>
-            <br></br>
 
         </MainLayout>
 
