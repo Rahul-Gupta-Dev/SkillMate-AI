@@ -11,6 +11,9 @@ import Resources from "../pages/Resources/Resources";
 import Profile from "../pages/Profile/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 import HabitTracker from "../pages/HabitTracker/HabitTracker";
+import Interview from "../pages/Interview/Interview";
+import Internships from "../pages/Internships/Internships";
+import Notifications from "../pages/Notifications/Notifications";
 
 function AppRouter() {
     return (
@@ -40,6 +43,33 @@ function AppRouter() {
                 <Route path="/progress" element={<Progress />} />
 
                 <Route path="/resources" element={<Resources />} />
+
+                <Route
+                    path="/interview"
+                    element={
+                        <ProtectedRoute>
+                            <Interview />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/internships"
+                    element={
+                        <ProtectedRoute>
+                            <Internships />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/notifications"
+                    element={
+                        <ProtectedRoute>
+                            <Notifications />
+                        </ProtectedRoute>
+                    }
+                />
 
                 <Route path="/habit-tracker" element={<HabitTracker />} />
                 ff4bacd (Add AI Habit Coach frontend UI)

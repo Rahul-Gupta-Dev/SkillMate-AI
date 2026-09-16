@@ -10,6 +10,8 @@ import {
     ClipboardList,
     Target,
     Sparkles,
+    Briefcase,
+    BellRing,
 } from "lucide-react";
 
 import MainLayout from "../../layouts/MainLayout";
@@ -290,6 +292,49 @@ function Dashboard() {
 
                     </div>
 
+                </div>
+
+                <div>
+                    <div className="flex justify-between items-center mb-6">
+                        <h2 className="text-3xl font-bold">
+                            Smart Career & Practice Widgets
+                        </h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <Link
+                            to="/interview"
+                            className="bg-white rounded-3xl shadow-lg p-7 hover:shadow-xl transition"
+                        >
+                            <div className="bg-indigo-100 w-16 h-16 rounded-2xl flex items-center justify-center">
+                                <Target className="text-indigo-600" size={30} />
+                            </div>
+                            <h3 className="font-bold text-2xl mt-5">Interview Readiness</h3>
+                            <p className="text-gray-500 mt-2">Practice AI mock interviews and improve accuracy.</p>
+                        </Link>
+
+                        <Link
+                            to="/internships"
+                            className="bg-white rounded-3xl shadow-lg p-7 hover:shadow-xl transition"
+                        >
+                            <div className="bg-emerald-100 w-16 h-16 rounded-2xl flex items-center justify-center">
+                                <Briefcase className="text-emerald-600" size={30} />
+                            </div>
+                            <h3 className="font-bold text-2xl mt-5">Recommended Internships</h3>
+                            <p className="text-gray-500 mt-2">Explore skill-based matches and save relevant openings.</p>
+                        </Link>
+
+                        <Link
+                            to="/notifications"
+                            className="bg-white rounded-3xl shadow-lg p-7 hover:shadow-xl transition"
+                        >
+                            <div className="bg-amber-100 w-16 h-16 rounded-2xl flex items-center justify-center">
+                                <BellRing className="text-amber-600" size={30} />
+                            </div>
+                            <h3 className="font-bold text-2xl mt-5">Unread Updates</h3>
+                            <p className="text-gray-500 mt-2">Stay on top of study, interview, and internship alerts.</p>
+                        </Link>
+                    </div>
                 </div>
 
                 {/* RECOMMENDED COURSES */}

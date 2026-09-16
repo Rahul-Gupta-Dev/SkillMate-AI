@@ -6,13 +6,14 @@ import {
   BarChart3,
   BookOpen,
   User,
+  Briefcase,
 } from "lucide-react";
 
 export default [
   {
     id: 1,
     title: "Dashboard",
-    path: "/dashboard",
+    path: "/",
     icon: LayoutDashboard,
   },
   {
@@ -47,12 +48,24 @@ export default [
   },
   {
     id: 7,
+    title: "Interview",
+    path: "/interview",
+    icon: Briefcase,
+  },
+  {
+    id: 8,
+    title: "Internships",
+    path: "/internships",
+    icon: Briefcase,
+  },
+  {
+    id: 9,
     title: "AI Habit Tracker",
     path: "/habit-tracker",
     icon: Brain,
   },
   {
-    id: 8,
+    id: 10,
     title: "Profile",
     path: "/profile",
     icon: User,
